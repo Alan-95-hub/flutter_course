@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../domain/navigation.dart';
 import '../components/action_button.dart';
-import '../components/upload_form.dart';
+import '../components/create_form.dart';
 import '../success/success_page.dart';
 
-class SendTemplatePage extends StatelessWidget {
-  const SendTemplatePage({super.key});
+class MentorSendTemplatePage extends StatelessWidget {
+  const MentorSendTemplatePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +14,13 @@ class SendTemplatePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(
-          color: Colors.black, //change your color here
+          color: Colors.black,
         ),
         elevation: 0,
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 64),
+          padding: const EdgeInsets.symmetric(horizontal: 64),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -38,14 +38,11 @@ class SendTemplatePage extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                const UploadForm(
-                  title: 'Название проекта',
-                  body: 'Впишите полное название проекта на русском языке.',
+                const CreateForm(
+                  tag: 'first_template',
                 ),
-                const UploadForm(
-                  title: 'Назначение для разработки',
-                  body:
-                      'Укажите назначение разработки проекта в соответствии с нормами.',
+                const CreateForm(
+                  tag: 'second',
                 ),
                 const SizedBox(
                   height: 16.0,

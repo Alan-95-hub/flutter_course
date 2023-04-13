@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
-class UploadForm extends StatelessWidget {
-  final String title;
-  final String body;
+import 'form_tag.dart';
 
-  const UploadForm({super.key, required this.title, required this.body});
+class CreateForm extends StatelessWidget {
+  final String tag;
+
+  const CreateForm({
+    super.key,
+    required this.tag,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,29 +23,35 @@ class UploadForm extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                TextFormField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: null,
+                  cursorColor: Colors.orange,
+                  decoration: const InputDecoration(
+                    hintText: 'Название',
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.orange),
+                    ),
                   ),
                 ),
-                Text(
-                  body,
-                  style: const TextStyle(
-                    fontSize: 16,
-                  ),
+                const SizedBox(
+                  height: 8,
                 ),
                 TextFormField(
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
                   cursorColor: Colors.orange,
                   decoration: const InputDecoration(
+                    hintText: 'Комментарий',
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.orange),
                     ),
                   ),
                 ),
+                const SizedBox(
+                  height: 16,
+                ),
+                FormTag(text: tag),
               ],
             ),
           ),
