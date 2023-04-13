@@ -1,5 +1,5 @@
-import 'package:f/ui/select_role.dart/select_role_page.dart';
 import 'package:flutter/material.dart';
+import 'package:mentors_joy/ui/select_role/select_role_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: SelectRolePage(),
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+        primary: const Color(0xFF000000),
+      )),
+      home: const SelectRolePage(),
     );
   }
 }

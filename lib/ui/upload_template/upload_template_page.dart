@@ -1,8 +1,10 @@
-import 'package:f/ui/components/upload_button.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
+import '../../domain/navigation.dart';
 import '../components/action_button.dart';
+import '../components/upload_button.dart';
+import '../send_template/send_template_page.dart';
 
 class UploadTemplatePage extends StatefulWidget {
   const UploadTemplatePage({super.key});
@@ -35,14 +37,18 @@ class _UploadTemplatePageState extends State<UploadTemplatePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 16.0,
+          horizontal: 64,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Center(
+              child: Text(
                 'Создайте шаблон',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -50,26 +56,29 @@ class _UploadTemplatePageState extends State<UploadTemplatePage> {
                   color: Colors.black,
                 ),
               ),
-              const SizedBox(height: 16.0),
-              UploadButton(
-                text: 'Нажмите, чтобы выбрать .json файл',
-                isDone: _filePathJson != null,
-                onPressed: _pickJsonFile,
+            ),
+            const SizedBox(height: 16.0),
+            UploadButton(
+              text: 'Нажмите, чтобы выбрать .json файл',
+              isDone: _filePathJson != null,
+              onPressed: _pickJsonFile,
+            ),
+            const SizedBox(height: 16.0),
+            UploadButton(
+              text: 'Нажмите, чтобы выбрать .docx файл',
+              isDone: _filePathDocx != null,
+              onPressed: _pickDocxFile,
+            ),
+            const SizedBox(height: 16.0),
+            ActionButton(
+              text: 'Отправить',
+              isActive: _filePathDocx != null && _filePathJson != null,
+              onPressed: () => navigate(
+                const SendTemplatePage(),
+                context: context,
               ),
-              const SizedBox(height: 16.0),
-              UploadButton(
-                text: 'Нажмите, чтобы выбрать .docx файл',
-                isDone: _filePathDocx != null,
-                onPressed: _pickDocxFile,
-              ),
-              const SizedBox(height: 16.0),
-              ActionButton(
-                text: 'Отправить',
-                isActive: _filePathDocx != null && _filePathJson != null,
-                onPressed: () {},
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
